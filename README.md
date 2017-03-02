@@ -1,4 +1,4 @@
-### lscook
+# lscook()
 ## JavaScript function for preservation in LocalStorage or (as a fallback) Cookie  
 
 Function ***lscook()*** try to read/write JSON data to localStorage (LS) under HTML-5. 
@@ -32,19 +32,19 @@ Usage:
 ### Remarks:
  
   - all saved data contain additional prefix 'lscook_', which allows select only necessaries cookies; 
-  - if window's LS is not available, then data will be saved on document's Cookie until date=31/12/2222
-  - data deleted both,- from LS (if is enabled) and from Cookies (always)
+  - if window's LS is not available, then data will be saved on document's Cookie until date=31/12/2222;
+  - data deleted both,- from LS (if is enabled) and from Cookies (always).
   
  #
  ### Logging: 
    + pseudo-errors loged on 'console':
 ```   
-    - ! localStorage disabled;
+    - ! localStorage disabled
     - ! fact of deleting of all LS/cookies with 'cookj_' prefix 
  ```    
    + foresaw errors loged on 'console':
 ```      
-    - call with (key == nothing) or (key == null);
+    - call with (key == nothing) or (key == null)
     - fault on conversion to JSON
     - case (on save) of summary length for cookie exideed 4k
     - case (on save) of summary length for LS exideed 5M
