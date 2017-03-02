@@ -34,12 +34,13 @@ Usage:
   - all saved data contain additional prefix 'lscook_', which allows select only necessaries cookies; 
   - if window's LS is not available, then data will be saved on document's Cookie until date=31/12/2222
   - data deleted both,- from LS (if is enabled) and from Cookies (always)
+  
  #
  ### Logging: 
    + *pseudo-errors loged on 'console' *:
 ```   
-    - '!' localStorage disabled;
-    - '!' fact of deleting of all LS/cookies with 'cookj_' prefix 
+    - ! localStorage disabled;
+    - ! fact of deleting of all LS/cookies with 'cookj_' prefix 
  ```    
    + *foresaw errors loged on 'console' *:
 ```      
