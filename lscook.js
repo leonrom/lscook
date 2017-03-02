@@ -1,6 +1,6 @@
 /**
  * Eeasy work with localStorag/Cookies
- * v.1.0.0
+ * v.1.0.1
  * 
  * Function lscook() try to read/write JSON data to localStorage (LS) according to HTML-5. 
  * If LS isn't enabled, then JSON-data wii be stored as a Cookie. It is based on 
