@@ -12,38 +12,40 @@ Usage:
     
  where `key` is String and `dat` is JSON. Additional parameter `cookieOnly` tells (if is 'true') to use only Cookies/
   
-### Algoritm:  
+### Algoritm: 
+```
  if (key == undefined) or (key == null) then 
    nothinf to do
  else
    if (key == 'NULL') then 
-     delete all keys with prefix 'cookj_'
+     delete all keys with prefix 'lscook_'
    else
      if (dat== null) or (dat == 'NULL') then 
-       delete key==('cookj_'+key)
+       delete key==('lscook_'+key)
      else
      if (dat == undefined) then 
-       return JSON.parse(dat) for  key==('cookj_'+key)
+       return JSON.parse(dat) for  key==('lscook_'+key)
      else
-       store JSON.stringify(dat) for key==('cookj_'+key) 
-       
-  
- ### Remarks:
+       store JSON.stringify(dat) for key==('lscook_'+key) 
+```   
+#
+### Remarks:
  
   - all saved data contain additional prefix 'lscook_', which allows select only necessaries cookies; 
-  - if window's LS is not available, then data will be saved on document's Cookie until 31/12/2222 date
+  - if window's LS is not available, then data will be saved on document's Cookie until date=31/12/2222
   - data deleted both,- from LS (if is enabled) and from Cookies (always)
- 
+ #
  ### Logging: 
-   1. **function logs on 'console' pseudo-errors**:
+   + *pseudo-errors loged on 'console' *:
 ```   
     - '!' localStorage disabled;
     - '!' fact of deleting of all LS/cookies with 'cookj_' prefix 
-     
-   2. **function logs on 'console' foresaw errors**:
+ ```    
+   + *foresaw errors loged on 'console' *:
 ```      
     - call with (key == nothing) or (key == null);
     - fault on conversion to JSON
     - case (on save) of summary length for cookie exideed 4k
     - case (on save) of summary length for LS exideed 5M
      - case when LS is not available and cookies are blocked bu browser
+```
