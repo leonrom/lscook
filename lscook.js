@@ -1,41 +1,48 @@
 /**
- * easy work with localStorag/Cookies
+ * Eeasy work with localStorag/Cookies
  * v.1.0.0
- * based on Fluidbyte/SimpleStore.js (https://gist.github.com/Fluidbyte/4718380)
  * 
- * USE:
- *   cookj(key, dat, cookieOnly);
- * where key is String and dat is JSON. Additionak parameter cookieOnly=true tells use only Cookies
+ * Function lscook() try to read/write JSON data to localStorage (LS) according to HTML-5. 
+ * If LS isn't enabled, then JSON-data wii be stored as a Cookie. It is based on 
+ * Fluidbyte/SimpleStore.js (https://gist.github.com/Fluidbyte/4718380). The main differences 
+ * lie on a deeper analysis of the availability for LS/Cookies and logging possibilities of failures.
  * 
- * if (key == undefined) or (key == null) then 
- *   nothinf to do
- * else
- * if (key == 'NULL') then 
- *   delete all keys with prefix 'cookj_'
- * else
- *   if (dat== null) or (dat == 'NULL') then 
- *      delete key==('cookj_'+key)
- *   else
- *   if (dat == undefined) then 
- *      return JSON.parse(dat) for  key==('cookj_'+key)
- *   else
- *      store JSON.stringify(dat) for key==('cookj_'+key) 
- * 
- * remark:
- *   if ls is available, then storen on it elsewhere in cookie for 111 year
- *   Data deletet from localStorage only if it's enabled and from Coojie in any case
+ * Usage: 
+ *     lscook(key, dat, cookieOnly);
+ *     
+ *  where `key` is String and `dat` is JSON. Additional parameter `cookieOnly` tells (if is `true`) to use only Cookies.
  *   
+ *  Algoritm: 
  * 
- * psewdo-errors (on conxole.log):
- *   '!' localStorage disabled
- *   '!' fact of deleting of all LS/cookies with 'cookj_' prefix
+ *  if (key == undefined) or (key == null) then 
+ *    nothinf to do
+ *  else
+ *    if (key == 'NULL') then 
+ *      delete all keys with prefix 'lscook_'
+ *    else
+ *      if (dat== null) or (dat == 'NULL') then 
+ *        delete key==('lscook_'+key)
+ *      else
+ *      if (dat == undefined) then 
+ *        return JSON.parse(dat) for  key==('lscook_'+key)
+ *      else
+ *        store JSON.stringify(dat) for key==('lscook_'+key) 
  * 
- * errors (on conxole.log):
- *   (key == nothing)||(key == null)
- *   conversion to JSON
- *   summary length for cookie (on save() exideed 4k
- *   summary length for ls exideed 5M
- *   ls is not available and cookies are blocked
+ *  Remarks:
+ *   - all saved data contain additional prefix 'lscook_', which allows select only necessaries cookies; 
+ *   - if window's LS is not available, then data will be saved on document's Cookie until date=31/12/2222;
+ *   - data deleted both,- from LS (if is enabled) and from Cookies (always).
+ *  
+ *  Logging: 
+ *    + pseudo-errors loged on 'console':    
+ *     - ! localStorage disabled
+ *     - ! fact of deleting of all LS/cookies with 'cookj_' prefix       
+ *    + foresaw errors loged on 'console':       
+ *     - call with (key == nothing) or (key == null)
+ *     - fault on conversion to JSON
+ *     - case (on save) of summary length for cookie exideed 4k
+ *     - case (on save) of summary length for LS exideed 5M
+ *     - case when LS is not available and cookies are blocked bu browser 
  */
 
 var lscook = function(key0, dat0, cookieOnly) {
@@ -45,7 +52,7 @@ var lscook = function(key0, dat0, cookieOnly) {
         return
     }
 
-    var pref = 'cookj_'
+    var pref = 'lscook_'
     var ls = window.localStorage
     var lsOK = (ls && !cookieOnly) ? true : false;
     var first = true
@@ -107,7 +114,7 @@ var lscook = function(key0, dat0, cookieOnly) {
         return data
     }
     else {                  // write data
-        var maxDate = "2222-12-22T20:17:40.234 UTC"
+        var maxDate = "2222-12-31T20:17:40.234 UTC"
         
         var str = JSON.stringify(dat0);
         if (lsOK) { // use localStorage
