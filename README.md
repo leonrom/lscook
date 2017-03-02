@@ -1,11 +1,11 @@
 # lscook()
 ## JavaScript function for preservation in LocalStorage or (as a fallback) Cookie  
 
-Function ***lscook()*** try to read/write JSON data to localStorage (LS) under HTML-5. 
-If LS isn't enabled, then JSON-data wii be stored as a cookie. 
+Function ***lscook()*** try to read/write JSON data to localStorage (***LS***) according to HTML-5. 
+If ***LS*** isn't enabled, then JSON-data wii be stored as a ***Cookie***. 
 
 ***lscook()*** is based on [Fluidbyte/SimpleStore.js](https://gist.github.com/Fluidbyte/4718380).
-The main difference lies in a deeper analysis of the availability for LS/Cookies and logging possibilities of failures.
+The main differences lie on a deeper analysis of the availability for LS/Cookies and logging possibilities of failures.
 
 Usage:
 ```
