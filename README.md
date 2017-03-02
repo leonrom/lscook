@@ -8,9 +8,10 @@ If LS isn't enabled, then JSON-data wii be stored as a cookie.
 The main difference lies in a deeper analysis of the availability for LS/Cookies and logging possibilities of failures.
 
 Usage:
+```
     lscook(key, dat, cookieOnly);
-    
- where `key` is String and `dat` is JSON. Additional parameter `cookieOnly` tells (if is `true`) to use only Cookies/
+```    
+ where `key` is String and `dat` is JSON. Additional parameter `cookieOnly` tells (if is `true`) to use only Cookies.
   
 ### Algoritm: 
 ```
