@@ -2,7 +2,7 @@
 ## JavaScript function for preservation in LocalStorage or (as a fallback) Cookie  
 
 Function ***lscook()*** try to read/write JSON data to localStorage (LS) under HTML-5. 
-If LS isn't enabled, then JSON-data stored as a cookie. 
+If LS isn't enabled, then JSON-data wii be stored as a cookie. 
 
 ***lscook()*** is based on [Fluidbyte/SimpleStore.js](https://gist.github.com/Fluidbyte/4718380).
 The main difference lies in a deeper analysis of the availability for LS/Cookies and logging possibilities of failures.
@@ -26,20 +26,22 @@ Usage:
        return JSON.parse(dat) for  key==('cookj_'+key)
      else
        store JSON.stringify(dat) for key==('cookj_'+key) 
+       
   
  ### Remarks:
+ 
   - all saved data contain additional prefix 'lscook_', which allows select only necessaries cookies; 
   - if window's LS is not available, then data will be saved on document's Cookie until 31/12/2222 date
   - data deleted both,- from LS (if is enabled) and from Cookies (always)
  
  ### Logging: 
-   1) **function logs on 'console' pseudo-errors**:
+   1. **function logs on 'console' pseudo-errors**:
 ```   
     - '!' localStorage disabled;
     - '!' fact of deleting of all LS/cookies with 'cookj_' prefix 
      
-   2) **function logs on 'console' foresaw errors**:
-``` <li>     
+   2. **function logs on 'console' foresaw errors**:
+```      
     - call with (key == nothing) or (key == null);
     - fault on conversion to JSON
     - case (on save) of summary length for cookie exideed 4k
