@@ -36,8 +36,8 @@ Usage:
   - if window's LS is not available, then data will be saved on document's Cookie until date=31/12/2222;
   - data deleted both,- from LS (if is enabled) and from Cookies (always).
   
- #
- ### Logging: 
+#
+### Logging: 
    + pseudo-errors loged on 'console':
 ```   
     - ! localStorage disabled
